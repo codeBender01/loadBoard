@@ -360,6 +360,7 @@ $mainColor: #ffffff;
               padding: 15px 11px;
               height: 150px;
               font-size: 18px;
+              margin-top: 15px;
 
               background: linear-gradient(
                 109.46deg,
@@ -394,6 +395,7 @@ $mainColor: #ffffff;
               font-size: 18px;
               line-height: 135%;
               letter-spacing: 0.01em;
+              margin-top: 15px;
             }
           }
         }

@@ -52,4 +52,14 @@ body {
   width: 95%;
   margin: 0 auto;
 }
+
+.h1 {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 110%;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+}
 </style>
