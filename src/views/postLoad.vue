@@ -18,6 +18,8 @@
 import PostLoad from "../components/PostLoad.vue";
 import download from "../assets/download.png";
 import postLoadImg from "../assets/postLoad.png";
+import dropdown from "../assets/dropdn.png";
+import calendar from "../assets/calen.png";
 export default {
   components: {
     PostLoad: PostLoad,
@@ -29,19 +31,75 @@ export default {
       title: "NEW LOAD POST",
       alert: "Alert",
       info: [
-        "Keep",
-        "Age",
-        "Status",
-        "Pickup",
-        "Owner",
-        "Origin",
-        "Destination",
-        "Dock Hours",
-        "Truck",
-        "F/P",
-        "Lengh",
-        "Weight",
-        "Offer Rate($)",
+        {
+          id: 1,
+          title: "Keep",
+          value: "",
+        },
+        {
+          id: 2,
+          title: "Age",
+          value: "",
+        },
+        {
+          id: 3,
+          title: "Status",
+          value: "",
+        },
+        {
+          id: 4,
+          title: "Pickup",
+          value: "12/31",
+          icon: dropdown,
+          iconSecond: calendar,
+        },
+        {
+          id: 5,
+          title: "Owner",
+          value: "",
+        },
+        {
+          id: 6,
+          title: "Origin",
+          value: "City,ST",
+        },
+        {
+          id: 7,
+          title: "Destination",
+          value: "City,ST",
+        },
+        {
+          id: 8,
+          title: "Dock Hours",
+          value: "3p-5p",
+        },
+        {
+          id: 9,
+          title: "Truck",
+          value: "",
+        },
+        {
+          id: 10,
+          title: "F/P",
+          value: "Full",
+          icon: dropdown,
+        },
+        {
+          id: 11,
+          title: "Length",
+          value: "999",
+          icon: "",
+        },
+        {
+          id: 12,
+          title: "Weight",
+          value: "999,999",
+        },
+        {
+          id: 13,
+          title: "Offer Rate($)",
+          value: "999",
+        },
       ],
     };
   },
