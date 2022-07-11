@@ -4,7 +4,7 @@
       <div class="flex head">
         <div class="new">
           <slot name="iconOfNew"></slot>
-          <span>{{ titleOfNew }}</span>
+          <span>{{ allData.title }}</span>
         </div>
         <slot name="download" class="download"></slot>
       </div>
@@ -13,13 +13,13 @@
           <input class="checkbox-pull" type="checkbox" id="check3" />
           <label for="check3"><span></span></label>
           <span class="checkmark"></span>
-          {{ alert }}
+          {{ allData.alert }}
         </div>
 
         <table>
           <thead>
             <tr>
-              <th v-for="info in infoHeaders" :key="info.id">
+              <th v-for="info in allData.info" :key="info.id">
                 {{ info.title }}
               </th>
             </tr>
@@ -27,7 +27,7 @@
 
           <tbody>
             <tr>
-              <td v-for="info in infoHeaders" :key="info.id">
+              <td v-for="info in allData.info" :key="info.id">
                 <div class="capsule flex" v-if="info.value">
                   <span>{{ info.value }}</span>
 
@@ -40,10 +40,55 @@
                 </div>
               </td>
             </tr>
+            <tr class="xclsv">
+              <td v-for="info in allData.info" :key="info.id">
+                <div class="capsule flex" v-if="info.valueMore">
+                  <span>{{ info.valueMore }}</span>
+                  <img v-if="info.icon" :src="info.icon" alt="icon" />
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <div class="inputs"></div>
+      <div class="inputs">
+        <div class="contacts flex" v-if="allData.contacts.required">
+          <div class="refId capsule">
+            <span class="label">Ref ID</span>
+            <span class="value">123456</span>
+          </div>
+          <div class="phone capsule">
+            <div>
+              <span class="label">Contacts</span>
+
+              <span class="value">+993(62)00-00-00</span>
+            </div>
+            <img :src="allData.dropdownIcon" alt="dropdown" />
+          </div>
+        </div>
+        <div class="comments flex" v-if="allData.comments.required">
+          <div class="comment capsule">
+            <span class="label">Comments 1</span>
+            <input type="text" placeholder="--" />
+          </div>
+          <div class="comment capsule">
+            <span class="label">Comments 2</span>
+            <input type="text" placeholder="--" />
+          </div>
+          <div class="comment capsule">
+            <span class="label">Commodity</span>
+            <input type="text" placeholder="--" />
+          </div>
+        </div>
+        <div class="post">
+          <div class="alarm-btn capsule flex">
+            <img :src="allData.lamp" alt="lamp" />
+            <span>Set audible alarm</span>
+          </div>
+          <button class="post-btn btn">POST</button>
+          <button class="close-btn btn">&#10006;</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,12 +96,10 @@
 <script>
 export default {
   props: {
-    titleOfNew: {
+    allData: {
+      type: Object,
       required: true,
-      type: String,
     },
-    alert: String,
-    infoHeaders: Array,
   },
 };
 </script>
@@ -75,6 +118,22 @@ $white: mix($dark, white, 20%);
   }
   100% {
     height: 1.2rem;
+  }
+}
+
+.capsule {
+  border: 1px solid #d3d3d3;
+  border-radius: 20px;
+  background: #34303e;
+  padding: 2px 5px;
+  cursor: pointer;
+  span {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 112%;
+    letter-spacing: 0.02em;
+    font-feature-settings: "salt" on, "liga" off;
+    color: #e8e8ea;
   }
 }
 
@@ -176,20 +235,15 @@ $white: mix($dark, white, 20%);
             td {
               padding-top: 10px;
               .capsule {
-                border: 1px solid #d3d3d3;
-                border-radius: 20px;
-                background: #34303e;
-                padding: 2px 5px;
                 width: 80%;
-                cursor: pointer;
-                span {
-                  font-weight: 700;
-                  font-size: 12px;
-                  line-height: 112%;
-                  letter-spacing: 0.02em;
-                  font-feature-settings: "salt" on, "liga" off;
-                  color: #e8e8ea;
-                }
+              }
+            }
+          }
+          .xclsv {
+            td {
+              padding-top: 10px;
+              .capsule {
+                width: 100%;
               }
             }
           }
@@ -198,10 +252,92 @@ $white: mix($dark, white, 20%);
     }
 
     .inputs {
-      height: 50vh;
       width: 100%;
       background: rgba(119, 117, 127, 0.1);
-      margin-top: -2.4rem;
+      margin-top: -4.33rem;
+      padding: 120px 0;
+      position: relative;
+      .contacts {
+        width: 50%;
+        padding: 0 10px;
+        .refId {
+          padding: 5px 35px 5px 10px;
+        }
+        .phone {
+          width: 25%;
+          padding: 5px 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      .label {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 116%;
+        align-items: center;
+        color: #4a4754;
+      }
+      span {
+        display: table;
+      }
+
+      .comments {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-bottom: 10px;
+        .comment {
+          padding: 3px 15px;
+          margin: 0 10px;
+          input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+          }
+        }
+      }
+
+      .post {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 10px;
+        margin-bottom: 10px;
+
+        padding: 5px;
+        .alarm-btn {
+          padding: 4px 8px;
+          cursor: pointer;
+          img {
+            margin-right: 3px;
+          }
+        }
+
+        .btn {
+          background: #a5a3a9;
+          border-radius: 10px;
+          padding: 8px;
+          margin-top: 8px;
+          cursor: pointer;
+          border: none;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 147%;
+          color: #34303e;
+        }
+
+        .close-btn {
+          float: right;
+          width: 25%;
+          padding: 8px 5px;
+        }
+
+        .post-btn {
+          width: 65%;
+        }
+      }
     }
   }
 }
