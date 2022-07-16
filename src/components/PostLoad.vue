@@ -80,7 +80,7 @@
             <input type="text" placeholder="--" />
           </div>
         </div>
-        <div class="post">
+        <div class="post" v-if="allData.post.required">
           <div class="alarm-btn capsule flex">
             <img :src="allData.lamp" alt="lamp" />
             <span>Set audible alarm</span>
@@ -142,7 +142,7 @@ $white: mix($dark, white, 20%);
   margin-top: 100px;
   .container {
     background-color: #0f0d15;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
 
     .head {
       border-radius: 20px 20px 0 0;
@@ -257,6 +257,7 @@ $white: mix($dark, white, 20%);
       margin-top: -4.33rem;
       padding: 120px 0;
       position: relative;
+      border-radius: 0 0 20px 20px;
       .contacts {
         width: 50%;
         padding: 0 10px;

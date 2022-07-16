@@ -11,19 +11,35 @@
         <img :src="passedData.iconOfDownload" alt="" />
       </template>
     </post-load>
+
+    <posted-load
+      v-for="value in postedLoads"
+      :key="value"
+      :postedData="value"
+    ></posted-load>
+
+    <load-filter :numOfResults="numOfResults" />
   </div>
 </template>
 
 <script>
 import PostLoad from "../components/PostLoad.vue";
+import PostedLoad from "../components/PostedLoad.vue";
+import LoadFilter from "../components/LoadFilter.vue";
+
 import download from "../assets/download.png";
 import postLoadImg from "../assets/postLoad.png";
 import dropdown from "../assets/dropdn.png";
 import calendar from "../assets/calen.png";
 import lamp from "../assets/lamp.png";
+import bell from "../assets/bell.png";
+import star from "../assets/star.png";
+
 export default {
   components: {
-    PostLoad: PostLoad,
+    PostLoad,
+    PostedLoad,
+    LoadFilter,
   },
   data() {
     return {
@@ -114,7 +130,93 @@ export default {
         comments: {
           required: true,
         },
+        post: {
+          required: true,
+        },
       },
+
+      postedLoads: {
+        postedData: {
+          indicator: {
+            on: false,
+            text: "off",
+          },
+          bell,
+          star,
+          postedTime: "00:10",
+          status: "Posted",
+          date: "12/31",
+          daytime: "AM",
+          from: "Anew,AH",
+          to: "Boldumsaz,DZ",
+          dockHours: "1/2 8am to 12 pm",
+          truck: "VAN",
+          filling: "Full",
+          length: "48 ft",
+          weight: "48,000 lb",
+          offerRate: "$230",
+          refId: 123456,
+          contact: "993(62)000000",
+          miles: "999",
+          comment1: "Call Eric x555",
+          comment2: "102* wide is rqd",
+          commodity: "Electronics ",
+        },
+        postedData2: {
+          indicator: {
+            on: true,
+            text: "on",
+          },
+          bell,
+          star,
+          postedTime: "00:10",
+          status: "Posted",
+          date: "12/31",
+          daytime: "AM",
+          from: "Anew,AH",
+          to: "Boldumsaz,DZ",
+          dockHours: "1/2 8am to 12 pm",
+          truck: "VAN",
+          filling: "Pa-l",
+          length: "48 ft",
+          weight: "48,000 lb",
+          offerRate: "$230",
+          refId: 123456,
+          contact: "993(62)000000",
+          miles: "999",
+          comment1: "Call Eric x555",
+          comment2: "102* wide is rqd",
+          commodity: "Electronics ",
+        },
+        postedData3: {
+          indicator: {
+            on: true,
+            text: "on",
+          },
+          bell,
+          star,
+          postedTime: "00:10",
+          status: "Posted",
+          date: "12/31",
+          daytime: "AM",
+          from: "Anew,AH",
+          to: "Boldumsaz,DZ",
+          dockHours: "1/2 8am to 12 pm",
+          truck: "VAN",
+          filling: "Full",
+          length: "48 ft",
+          weight: "50,000 lb",
+          offerRate: "$230",
+          refId: 123456,
+          contact: "993(62)000000",
+          miles: "999",
+          comment1: "Call Eric x555",
+          comment2: "102* wide is rqd",
+          commodity: "Electronics ",
+        },
+      },
+
+      numOfResults: 0,
     };
   },
 };
