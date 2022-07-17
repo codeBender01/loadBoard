@@ -48,6 +48,32 @@
           </button>
         </div>
       </div>
+
+      <div class="matches">
+        <div class="results">
+          <div class="arrow">
+            <img src="../assets/arrow-rg.png" alt="arrow" />
+          </div>
+          <span>{{ numOfResults }}</span>
+          <span class="text">exact matches</span>
+        </div>
+
+        <div class="message">
+          <p>
+            We’re sorry there are now results for this search. You may find some
+            results if you widen your filters.
+          </p>
+        </div>
+
+        <div class="results">
+          <div class="up-arrow">
+            <img src="../assets/up-arrows.png" alt="arrow" />
+          </div>
+
+          <span>26</span>
+          <span class="text">similar matches</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,7 +89,7 @@ export default {
 
   data() {
     return {
-      selected: undefined,
+      selected: 1,
     };
   },
 };
@@ -75,6 +101,22 @@ export default {
   --select-focus: gray;
   --select-arrow: var(--select-border);
 }
+
+.results {
+  padding-top: 4px;
+  span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 135%;
+    letter-spacing: 0.01em;
+    color: #f9f9f9;
+    text-transform: uppercase;
+  }
+  .text {
+    margin-left: 3px;
+  }
+}
+
 select {
   appearance: none;
   background-color: #1d1929;
@@ -112,23 +154,14 @@ input {
     .upper-filter {
       color: #fff;
       .flex {
+        font-size: 14px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 135%;
+        letter-spacing: 0.01em;
+
         div {
           margin: 0 10px;
-        }
-
-        .results {
-          padding-top: 2px;
-          span {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 135%;
-            letter-spacing: 0.01em;
-            color: #f9f9f9;
-            text-transform: uppercase;
-          }
-          .text {
-            margin-left: 5px;
-          }
         }
 
         .f-p {
@@ -185,11 +218,13 @@ input {
           transition: ease-in 0.2s;
           border: 1px solid #bbbabf;
           text-transform: uppercase;
+          outline: none;
         }
 
         .all {
           border-radius: 15px 0 0 15px;
           padding: 2px 30px;
+          border-right: none;
         }
 
         .highlight {
@@ -200,6 +235,45 @@ input {
         .blocked {
           margin-left: 5px;
         }
+      }
+    }
+    .matches {
+      padding: 0 3px;
+      .results {
+        align-items: center;
+        .arrow {
+          background: #000;
+          display: inline;
+          border-radius: 0 5px 5px 0;
+          padding: 0 12px;
+          margin-right: 5px;
+          img {
+            width: 5px;
+          }
+        }
+
+        .up-arrow {
+          display: inline;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .message {
+      background: linear-gradient(
+        254.81deg,
+        rgba(26, 80, 255, 0.1) 8.13%,
+        rgba(30, 233, 182, 0.1) 92.46%
+      );
+      color: #ffffff;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      padding: 30px 20px 50px 20px;
+      border-radius: 5px;
+      margin: 5px 0;
+      p {
+        width: 30%;
       }
     }
   }

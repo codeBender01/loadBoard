@@ -8,50 +8,56 @@
         </div>
         <slot name="download" class="download"></slot>
       </div>
-      <div class="flex data">
-        <div class="alert-check flex">
-          <input class="checkbox-pull" type="checkbox" id="check3" />
-          <label for="check3"><span></span></label>
-          <span class="checkmark"></span>
-          {{ allData.alert }}
-        </div>
+      <div class="black-line"></div>
 
-        <table>
-          <thead>
-            <tr>
-              <th v-for="info in allData.info" :key="info.id">
-                {{ info.title }}
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td v-for="info in allData.info" :key="info.id">
-                <div class="capsule flex" v-if="info.value">
-                  <span>{{ info.value }}</span>
-
-                  <img v-if="info.icon" :src="info.icon" alt="icon" />
-                  <img
-                    v-if="info.iconSecond"
-                    :src="info.iconSecond"
-                    alt="icon"
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr class="xclsv">
-              <td v-for="info in allData.info" :key="info.id">
-                <div class="capsule flex" v-if="info.valueMore">
-                  <span>{{ info.valueMore }}</span>
-                  <img v-if="info.icon" :src="info.icon" alt="icon" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <div class="inputs">
+        <div class="flex table-head">
+          <div class="alert-check flex">
+            <input class="checkbox-pull" type="checkbox" id="check3" />
+            <label for="check3"><span></span></label>
+            <span class="checkmark"></span>
+            {{ allData.alert }}
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th v-for="info in allData.info" :key="info.id">
+                  {{ info.title }}
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td v-for="info in allData.info" :key="info.id">
+                  <div class="capsule flex" v-if="info.value">
+                    <span>{{ info.value }}</span>
+
+                    <div class="icons flex">
+
+                      <img v-if="info.icon" :src="info.icon" alt="icon" />
+                      <img
+                        v-if="info.iconSecond"
+                        :src="info.iconSecond"
+                        alt="icon"
+                      />
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <tr class="xclsv">
+                <td v-for="info in allData.info" :key="info.id">
+                  <div class="capsule flex" v-if="info.valueMore">
+                    <span>{{ info.valueMore }}</span>
+                    <img v-if="info.icon" :src="info.icon" alt="icon" />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="contacts flex" v-if="allData.contacts.required">
           <div class="refId capsule">
             <span class="label">Ref ID</span>
@@ -141,8 +147,9 @@ $white: mix($dark, white, 20%);
   font-family: "NunitoSans", sans-serif;
   margin-top: 100px;
   .container {
-    background-color: #0f0d15;
     border-radius: 20px;
+    // background-color: #0f0d15;
+    position: relative;
 
     .head {
       border-radius: 20px 20px 0 0;
@@ -151,7 +158,7 @@ $white: mix($dark, white, 20%);
       padding: 20px 25px;
       justify-content: initial;
       .new {
-        padding: 5px 10px;
+        padding: 5px 20px;
         color: #ffffff;
         display: flex;
         align-items: center;
@@ -170,11 +177,68 @@ $white: mix($dark, white, 20%);
         }
       }
     }
-    .data {
-      padding: 15px 12px;
-      padding-top: 12px;
-      align-items: flex-start;
+    .black-line {
+     background: #0F0D15;
+     height: 38px;
+     width: 100%;
+     position: absolute;
+     top: 57px;
+     z-index: 1;
+    }
+
+    .inputs {
+      width: 100%;
+      background: rgba(119, 117, 127, 0.1);
+      position: relative;
+      border-radius: 0 0 20px 20px ;
+      padding-bottom: 5rem;
+      .table-head {
+        align-items: flex-start;
+      padding-left: 30px;
+
+        table {
+          z-index: 11;
+          width: 92%;
+          margin-bottom: 2rem;
+          thead {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 130%;
+            letter-spacing: 0.03em;
+            color: #4a4754;
+            text-align: left;
+          }
+          tbody {
+            color: #ffffff;
+            tr {
+              td {
+                padding-top: 10px;
+                .capsule {
+                  width: 60%;
+
+                  .icons {
+                    img {
+                      margin: 0 2px;
+                    }
+                  }
+                }
+              }
+            }
+            .xclsv {
+              td {
+                padding-top: 10px;
+                .capsule {
+      
+                  width: 60%;
+                }
+
+              }
+            }
+          }
+        }
       .alert-check {
+          z-index: 11;
+
         width: 4%;
         font-weight: 600;
         font-size: 12px;
@@ -182,7 +246,7 @@ $white: mix($dark, white, 20%);
         letter-spacing: 0.03em;
         color: #4a4754;
         position: relative;
-
+        align-self: flex-start;
         .checkbox-pull {
           display: none;
         }
@@ -218,46 +282,8 @@ $white: mix($dark, white, 20%);
           }
         }
       }
-      table {
-        width: 92%;
-        table-layout: fixed;
-        thead {
-          font-weight: 600;
-          font-size: 12px;
-          line-height: 130%;
-          letter-spacing: 0.03em;
-          color: #4a4754;
-          text-align: left;
-        }
-        tbody {
-          color: #ffffff;
-          tr {
-            td {
-              padding-top: 10px;
-              .capsule {
-                width: 80%;
-              }
-            }
-          }
-          .xclsv {
-            td {
-              padding-top: 10px;
-              .capsule {
-                width: 100%;
-              }
-            }
-          }
-        }
       }
-    }
 
-    .inputs {
-      width: 100%;
-      background: rgba(119, 117, 127, 0.1);
-      margin-top: -4.33rem;
-      padding: 120px 0;
-      position: relative;
-      border-radius: 0 0 20px 20px;
       .contacts {
         width: 50%;
         padding: 0 10px;

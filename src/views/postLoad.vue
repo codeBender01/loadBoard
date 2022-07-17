@@ -19,6 +19,9 @@
     ></posted-load>
 
     <load-filter :numOfResults="numOfResults" />
+
+
+    
   </div>
 </template>
 
