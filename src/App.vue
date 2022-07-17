@@ -9,8 +9,13 @@ export default {
 </script>
 
 <template>
+<div>
+
   <Navbar />
   <RouterView />
+</div>
+
+  
 </template>
 
 <style lang="scss">
@@ -31,6 +36,14 @@ body {
   padding: 0;
   margin: 0;
 }
+
+
+.ok {
+  margin: 5px;
+  }
+
+
+
 
 body {
   background-color: #1d1929;
