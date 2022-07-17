@@ -4,8 +4,12 @@
       <div @click="changeClass" ref="load" class="preview">
         <div class="flex">
           <div class="alert-check flex" @click="stop">
-            <input class="checkbox-pull" type="checkbox" id="check2" />
-            <label for="check2"><span></span></label>
+            <input
+              class="checkbox-pull"
+              type="checkbox"
+              :id="postedData.alertId"
+            />
+            <label :for="postedData.alertId"><span></span></label>
             <span class="checkmark"></span>
           </div>
 

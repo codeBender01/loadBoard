@@ -13,8 +13,8 @@
       <div class="inputs">
         <div class="flex table-head">
           <div class="alert-check flex">
-            <input class="checkbox-pull" type="checkbox" id="check3" />
-            <label for="check3"><span></span></label>
+            <input class="checkbox-pull" type="checkbox" id="check" />
+            <label for="check"><span></span></label>
             <span class="checkmark"></span>
             {{ allData.alert }}
           </div>
@@ -35,7 +35,6 @@
                     <span>{{ info.value }}</span>
 
                     <div class="icons flex">
-
                       <img v-if="info.icon" :src="info.icon" alt="icon" />
                       <img
                         v-if="info.iconSecond"
@@ -43,7 +42,6 @@
                         alt="icon"
                       />
                     </div>
-
                   </div>
                 </td>
               </tr>
@@ -178,23 +176,23 @@ $white: mix($dark, white, 20%);
       }
     }
     .black-line {
-     background: #0F0D15;
-     height: 38px;
-     width: 100%;
-     position: absolute;
-     top: 57px;
-     z-index: 1;
+      background: #0f0d15;
+      height: 38px;
+      width: 100%;
+      position: absolute;
+      top: 57px;
+      z-index: 1;
     }
 
     .inputs {
       width: 100%;
       background: rgba(119, 117, 127, 0.1);
       position: relative;
-      border-radius: 0 0 20px 20px ;
+      border-radius: 0 0 20px 20px;
       padding-bottom: 5rem;
       .table-head {
         align-items: flex-start;
-      padding-left: 30px;
+        padding-left: 30px;
 
         table {
           z-index: 11;
@@ -228,60 +226,58 @@ $white: mix($dark, white, 20%);
               td {
                 padding-top: 10px;
                 .capsule {
-      
                   width: 60%;
                 }
-
               }
             }
           }
         }
-      .alert-check {
+        .alert-check {
           z-index: 11;
 
-        width: 4%;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 130%;
-        letter-spacing: 0.03em;
-        color: #4a4754;
-        position: relative;
-        align-self: flex-start;
-        .checkbox-pull {
-          display: none;
-        }
-        .checkbox-pull + label span {
-          display: inline-block;
-          width: 25px;
-          height: 19px;
-          margin: 0 5px -4px 0; /*layout relationship between check and label*/
-          &:before,
-          &:after {
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            content: "";
-            position: absolute;
-            z-index: 1;
-            width: $checkbox-size;
-            height: $checkbox-size;
-            background: transparent;
-            border: 2px solid $border-color;
+          width: 4%;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 130%;
+          letter-spacing: 0.03em;
+          color: #4a4754;
+          position: relative;
+          align-self: flex-start;
+          .checkbox-pull {
+            display: none;
           }
-          &:after {
-            z-index: 0;
-            border: none;
+          .checkbox-pull + label span {
+            display: inline-block;
+            width: 25px;
+            height: 19px;
+            margin: 0 5px -4px 0; /*layout relationship between check and label*/
+            &:before,
+            &:after {
+              -webkit-transition: all 0.3s ease-in-out;
+              -moz-transition: all 0.3s ease-in-out;
+              transition: all 0.3s ease-in-out;
+              content: "";
+              position: absolute;
+              z-index: 1;
+              width: $checkbox-size;
+              height: $checkbox-size;
+              background: transparent;
+              border: 2px solid $border-color;
+            }
+            &:after {
+              z-index: 0;
+              border: none;
+            }
+          }
+          .checkbox-pull:checked + label span {
+            &:after {
+              width: $checkedbox-size;
+              height: $checkedbox-size;
+              background: $border-color;
+              animation: pull 0.4s linear;
+            }
           }
         }
-        .checkbox-pull:checked + label span {
-          &:after {
-            width: $checkedbox-size;
-            height: $checkedbox-size;
-            background: $border-color;
-            animation: pull 0.4s linear;
-          }
-        }
-      }
       }
 
       .contacts {
