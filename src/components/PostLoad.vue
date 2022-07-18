@@ -1,6 +1,6 @@
 <template>
   <div class="post-load">
-    <div class="container">
+    <div class="post-load-body">
       <div class="flex head">
         <div class="new">
           <slot name="iconOfNew"></slot>
@@ -84,13 +84,29 @@
             <input type="text" placeholder="--" />
           </div>
         </div>
-        <div class="post" v-if="allData.post.required">
+        <div class="post">
           <div class="alarm-btn capsule flex">
             <img :src="allData.lamp" alt="lamp" />
             <span>Set audible alarm</span>
           </div>
-          <button class="post-btn btn">POST</button>
-          <button class="close-btn btn">&#10006;</button>
+
+          <div class="flex">
+            <button class="post-btn btn" v-if="allData.button.required">
+              <span>
+                {{ allData.button.text }}
+              </span>
+            </button>
+
+            <button class="search-btn btn" v-if="allData.search.required">
+              <span>{{ allData.search.text }}</span>
+              <img
+                :src="allData.search.icon"
+                alt="icon"
+                v-if="allData.search.icon"
+              />
+            </button>
+            <button class="close-btn btn">&#10006;</button>
+          </div>
         </div>
       </div>
     </div>
@@ -144,7 +160,7 @@ $white: mix($dark, white, 20%);
 .post-load {
   font-family: "NunitoSans", sans-serif;
   margin-top: 100px;
-  .container {
+  .post-load-body {
     border-radius: 20px;
     // background-color: #0f0d15;
     position: relative;
@@ -328,10 +344,12 @@ $white: mix($dark, white, 20%);
         right: 0;
         margin-right: 10px;
         margin-bottom: 10px;
-
+        width: auto;
         padding: 5px;
         .alarm-btn {
           padding: 4px 8px;
+          width: 120px;
+          margin-left: auto;
           cursor: pointer;
           img {
             margin-right: 3px;
@@ -359,6 +377,26 @@ $white: mix($dark, white, 20%);
 
         .post-btn {
           width: 65%;
+          text-align: center;
+
+          span {
+            display: initial;
+          }
+        }
+
+        .search-btn {
+          width: auto;
+          display: flex;
+          // align-items: center;
+          justify-content: space-between;
+          margin-right: 10px;
+          img {
+            margin-left: 30px;
+            width: 15px;
+            height: 15px;
+            align-self: center;
+            margin-bottom: 2px;
+          }
         }
       }
     }

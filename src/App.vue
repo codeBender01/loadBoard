@@ -9,13 +9,10 @@ export default {
 </script>
 
 <template>
-<div>
-
-  <Navbar />
-  <RouterView />
-</div>
-
-  
+  <div>
+    <Navbar />
+    <RouterView />
+  </div>
 </template>
 
 <style lang="scss">
@@ -37,13 +34,9 @@ body {
   margin: 0;
 }
 
-
 .ok {
   margin: 5px;
-  }
-
-
-
+}
 
 body {
   background-color: #1d1929;
@@ -74,5 +67,6 @@ body {
   line-height: 110%;
   letter-spacing: 0.005em;
   color: #ffffff;
+  text-transform: uppercase;
 }
 </style>

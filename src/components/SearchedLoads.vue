@@ -1,47 +1,45 @@
 <template>
   <div class="filtered">
-    <div class="container">
-      <div class="border">
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <div class="alert-check flex" @click="stop">
-                  <input
-                    class="checkbox-pull"
-                    type="checkbox"
-                    id="filter-check"
-                  />
-                  <label for="filter-check"><span></span></label>
-                  <span class="checkmark"></span>
-                  <img :src="filteredData.dropdownIcon" alt="icon" />
-                  <img :src="filteredData.stackIcon" alt="icon" />
-                </div>
-              </th>
-              <th v-for="filter in filteredData.filters" :key="filter.id">
-                {{ filter.title }}
-                <img :src="filter.icon" alt="" v-if="filter.icon" />
-              </th>
-            </tr>
-          </thead>
+    <div class="border">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <div class="alert-check flex" @click="stop">
+                <input
+                  class="checkbox-pull"
+                  type="checkbox"
+                  id="filter-check"
+                />
+                <label for="filter-check"><span></span></label>
+                <span class="checkmark"></span>
+                <img :src="filteredData.dropdownIcon" alt="icon" />
+                <img :src="filteredData.stackIcon" alt="icon" />
+              </div>
+            </th>
+            <th v-for="filter in filteredData.filters" :key="filter.id">
+              {{ filter.title }}
+              <img :src="filter.icon" alt="" v-if="filter.icon" />
+            </th>
+          </tr>
+        </thead>
 
-          <tbody>
-            <tr v-for="value in filteredData.values" :key="value.id">
-              <td>
-                <div class="alert-check flex" @click="stop">
-                  <input class="checkbox-pull" type="checkbox" id="check2" />
-                  <label for="check2"><span></span></label>
-                  <span class="checkmark"></span>
-                </div>
-              </td>
+        <tbody>
+          <tr v-for="value in filteredData.values" :key="value.id">
+            <td>
+              <div class="alert-check flex" @click="stop">
+                <input class="checkbox-pull" type="checkbox" id="check2" />
+                <label for="check2"><span></span></label>
+                <span class="checkmark"></span>
+              </div>
+            </td>
 
-              <td v-for="subvalue in value" :key="subvalue">
-                {{ subvalue }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <td v-for="subvalue in value" :key="subvalue">
+              {{ subvalue }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -67,46 +65,46 @@ $white: mix($dark, white, 20%);
 
 .filtered {
   font-family: "NunitoSans", sans-serif;
-  .container {
-    .border {
-      border: 1px solid #34303e;
-      border-radius: 18px 18px 0 0;
-      padding: 10px 7px;
-      table {
-        width: 100%;
-        text-align: center;
-        border-collapse: collapse;
-        thead {
-          font-weight: 600;
-          font-size: 12px;
-          line-height: 130%;
-          letter-spacing: 0.03em;
-          color: #4a4754;
-          margin-bottom: 1rem;
-        }
 
-        tbody {
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 116%;
-          color: #f9f9f9;
-        }
+  .border {
+    border: 1px solid #34303e;
+    border-radius: 18px 18px 0 0;
+    padding: 10px 7px;
+    table {
+      width: 100%;
+      text-align: center;
+      border-collapse: collapse;
+      thead {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 130%;
+        letter-spacing: 0.03em;
+        color: #4a4754;
+        margin-bottom: 1rem;
+      }
 
-        tbody:before {
-          content: "@";
-          display: block;
-          line-height: 5px;
-          text-indent: -99999px;
-        }
+      tbody {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 116%;
+        color: #f9f9f9;
       }
-      table td {
-        border-top: 1px solid #000000;
-        border-bottom: 1px solid #000000;
-        padding: 7px 0;
+
+      tbody:before {
+        content: "@";
+        display: block;
+        line-height: 5px;
+        text-indent: -99999px;
       }
+    }
+    table td {
+      border-top: 1px solid #000000;
+      border-bottom: 1px solid #000000;
+      padding: 7px 0;
     }
   }
 }
+
 .alert-check {
   position: relative;
   background: transparent;

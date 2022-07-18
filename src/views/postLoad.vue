@@ -135,8 +135,12 @@ export default {
         comments: {
           required: true,
         },
-        post: {
+        button: {
           required: true,
+          text: "POST",
+        },
+        search: {
+          required: false,
         },
       },
 
