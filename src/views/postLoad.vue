@@ -1,30 +1,34 @@
 <template>
-  <div class="post-load">
-    <div class="container">
-      <h1 class="h1">POST LOAD</h1>
+  <div>
+    <Navbar />
+    <div class="post-load">
+      <div class="container">
+        <h1 class="h1">POST LOAD</h1>
+      </div>
+      <post-load :allData="passedData">
+        <template v-slot:iconOfNew>
+          <img :src="passedData.iconOfNew" alt="" />
+        </template>
+        <template v-slot:download>
+          <img :src="passedData.iconOfDownload" alt="" />
+        </template>
+      </post-load>
+
+      <posted-load
+        v-for="value in postedLoads"
+        :key="value"
+        :postedData="value"
+      ></posted-load>
+
+      <load-filter :numOfResults="numOfResults" />
+
+      <searched-loads :filteredData="filteredData" />
     </div>
-    <post-load :allData="passedData">
-      <template v-slot:iconOfNew>
-        <img :src="passedData.iconOfNew" alt="" />
-      </template>
-      <template v-slot:download>
-        <img :src="passedData.iconOfDownload" alt="" />
-      </template>
-    </post-load>
-
-    <posted-load
-      v-for="value in postedLoads"
-      :key="value"
-      :postedData="value"
-    ></posted-load>
-
-    <load-filter :numOfResults="numOfResults" />
-
-    <searched-loads :filteredData="filteredData" />
   </div>
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 import PostLoad from "../components/PostLoad.vue";
 import PostedLoad from "../components/PostedLoad.vue";
 import LoadFilter from "../components/LoadFilter.vue";
@@ -38,13 +42,16 @@ import lamp from "../assets/lamp.png";
 import bell from "../assets/bell.png";
 import star from "../assets/star.png";
 import stack from "../assets/stack.png";
+import Navbar1 from "../components/Navbar.vue";
 
 export default {
   components: {
+    Navbar,
     PostLoad,
     PostedLoad,
     LoadFilter,
     SearchedLoads,
+    Navbar1,
   },
   data() {
     return {

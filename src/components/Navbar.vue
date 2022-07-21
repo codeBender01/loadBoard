@@ -10,10 +10,15 @@
       </div>
       <div class="rg flex">
         <img v-for="icon in icons" :key="icon.id" :src="icon.img" alt="icon" />
-        <span
-          >Dphins.tm
-          <img src="../assets/dropdn.png" alt="dropdown" />
-        </span>
+        <div>
+          <router-link to="/login">
+            <span class="login link">Login</span>
+          </router-link>
+          <span>or</span>
+          <router-link to>
+            <span class="link">Register</span>
+          </router-link>
+        </div>
       </div>
     </div>
     <div class="header-container flex">
@@ -104,16 +109,16 @@ export default {
         },
       ],
 
-      selectedNavLink: undefined,
+      selectedNavLink: null,
     };
   },
 
   methods: {
     activeClassApplier(id) {
       this.selectedNavLink = id;
-      this.$el.classList.toggle("active");
-      this.$el.querySelector(".burger-menu").classList.toggle("active");
-      this.$el.querySelector(".header-links").classList.toggle("active");
+      // this.$el.classList.toggle("active");
+      // this.$el.querySelector(".burger-menu").classList.toggle("active");
+      // this.$el.querySelector(".header-links").classList.toggle("active");
     },
 
     classListToggler() {
@@ -191,12 +196,23 @@ $font-color: #fafafa;
         margin: 0 10px;
       }
       span {
-        border-left: 1px solid #b1b1b1;
         color: $font-color;
-        padding: 5px 10px;
+        padding: 3px 10px;
         padding-right: 0;
         font-size: 12px;
         line-height: 15px;
+        text-decoration: none;
+      }
+
+      .login {
+        border-left: 1px solid #b1b1b1;
+      }
+
+      .link {
+        color: #99b1ff;
+        &:hover {
+          opacity: 0.7;
+        }
       }
     }
   }

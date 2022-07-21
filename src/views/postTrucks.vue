@@ -1,27 +1,32 @@
 <template>
-  <div class="post-truck">
-    <div class="container">
-      <h1 class="h1">POST Trucks</h1>
+  <div>
+    <Navbar />
+
+    <div class="post-truck">
+      <div class="container">
+        <h1 class="h1">POST Trucks</h1>
+      </div>
+      <post-load :allData="passedData">
+        <template v-slot:iconOfNew>
+          <img :src="passedData.iconOfNew" alt="" />
+        </template>
+      </post-load>
+
+      <posted-load
+        v-for="value in postedLoads"
+        :key="value"
+        :postedData="value"
+      ></posted-load>
+
+      <load-filter :numOfResults="numOfResults" />
+
+      <searched-loads :filteredData="filteredData" />
     </div>
-    <post-load :allData="passedData">
-      <template v-slot:iconOfNew>
-        <img :src="passedData.iconOfNew" alt="" />
-      </template>
-    </post-load>
-
-    <posted-load
-      v-for="value in postedLoads"
-      :key="value"
-      :postedData="value"
-    ></posted-load>
-
-    <load-filter :numOfResults="numOfResults" />
-
-    <searched-loads :filteredData="filteredData" />
   </div>
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 import PostLoad from "../components/PostLoad.vue";
 import PostedLoad from "../components/PostedLoad.vue";
 import LoadFilter from "../components/LoadFilter.vue";
@@ -38,6 +43,7 @@ import stack from "../assets/stack.png";
 
 export default {
   components: {
+    Navbar,
     PostLoad,
     PostedLoad,
     LoadFilter,

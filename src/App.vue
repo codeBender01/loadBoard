@@ -10,7 +10,6 @@ export default {
 
 <template>
   <div>
-    <Navbar />
     <RouterView />
   </div>
 </template>

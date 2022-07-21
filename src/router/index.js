@@ -28,6 +28,11 @@ const router = createRouter({
       name: "searchloads",
       component: () => import("../views/searchLoads.vue"),
     },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("../views/login.vue"),
+    },
   ],
 });
 

@@ -1,109 +1,113 @@
 <template>
-  <div class="home">
-    <div class="container">
-      <div class="welcome">
-        <h1>Your load board with us</h1>
-        <div class="stats">
-          <div class="stat" v-for="stat in stats" :key="stat.id">
-            <span>{{ stat.title }}</span>
-            <span class="num">{{ stat.num }}</span>
+  <div>
+    <Navbar />
+
+    <div class="home">
+      <div class="container">
+        <div class="welcome">
+          <h1>Your load board with us</h1>
+          <div class="stats">
+            <div class="stat" v-for="stat in stats" :key="stat.id">
+              <span>{{ stat.title }}</span>
+              <span class="num">{{ stat.num }}</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="blurry"></div>
+        <div class="blurry"></div>
 
-      <div class="load-board">
-        <h2 class="h2">What is a Load Board?</h2>
-        <p v-for="p in pS" :key="p" class="p">
-          {{ p }}
-        </p>
-      </div>
-    </div>
-    <div class="fast-track">
-      <div class="container">
-        <div class="desc">
-          <h2 class="h2">Fast track to success</h2>
-          <p class="p">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-            consequat. Duis autem vel eum iriure
+        <div class="load-board">
+          <h2 class="h2">What is a Load Board?</h2>
+          <p v-for="p in pS" :key="p" class="p">
+            {{ p }}
           </p>
-          <button>added new post</button>
-        </div>
-        <img src="../assets/illustration.png" alt="" />
-      </div>
-    </div>
-
-    <div class="about">
-      <div class="container">
-        <h2 class="h2">Why Choose us?</h2>
-        <div class="benefits">
-          <div class="ben flex">
-            <div class="text">
-              <h3>Cost saving</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure
-              </p>
-            </div>
-            <img src="../assets/cost.png" alt="cost" />
-          </div>
-          <div class="ben flex">
-            <img src="../assets/safe.png" alt="safety" />
-            <div class="text">
-              <h3 class="right">Safe Packing</h3>
-              <p class="right">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure
-              </p>
-            </div>
-          </div>
-          <div class="ben flex">
-            <div class="text">
-              <h3>Fastest shiping</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure
-              </p>
-            </div>
-            <img src="../assets/fast.png" alt="car" />
-          </div>
         </div>
       </div>
-    </div>
+      <div class="fast-track">
+        <div class="container">
+          <div class="desc">
+            <h2 class="h2">Fast track to success</h2>
+            <p class="p">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+              erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
+              tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+              consequat. Duis autem vel eum iriure
+            </p>
+            <button>added new post</button>
+          </div>
+          <img src="../assets/illustration.png" alt="" />
+        </div>
+      </div>
 
-    <div class="contact">
-      <div class="container">
-        <div class="flex">
-          <img src="../assets/contact.png" alt="contact" />
-          <div class="forms">
-            <h3>Contact Us</h3>
-            <form action="#">
-              <label for="name">Enter your name</label>
-              <input type="text" placeholder="Your name" id="name" />
-              <label for="email">Enter your name</label>
+      <div class="about">
+        <div class="container">
+          <h2 class="h2">Why Choose us?</h2>
+          <div class="benefits">
+            <div class="ben flex">
+              <div class="text">
+                <h3>Cost saving</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                  diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                  aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+                  nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+                  aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                </p>
+              </div>
+              <img src="../assets/cost.png" alt="cost" />
+            </div>
+            <div class="ben flex">
+              <img src="../assets/safe.png" alt="safety" />
+              <div class="text">
+                <h3 class="right">Safe Packing</h3>
+                <p class="right">
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                  diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                  aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+                  nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+                  aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                </p>
+              </div>
+            </div>
+            <div class="ben flex">
+              <div class="text">
+                <h3>Fastest shiping</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                  diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                  aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+                  nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+                  aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                </p>
+              </div>
+              <img src="../assets/fast.png" alt="car" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-              <input type="email" placeholder="Email Address" id="email" />
-              <label for="message">Enter your message</label>
-              <textarea
-                name="message"
-                id="message"
-                placeholder="Message"
-              ></textarea>
-              <input type="submit" value="Send" class="submit" />
-            </form>
+      <div class="contact">
+        <div class="container">
+          <div class="flex">
+            <img src="../assets/contact.png" alt="contact" />
+            <div class="forms">
+              <h3>Contact Us</h3>
+              <form action="#">
+                <label for="name">Enter your name</label>
+                <input type="text" placeholder="Your name" id="name" />
+                <label for="email">Enter your name</label>
+
+                <input type="email" placeholder="Email Address" id="email" />
+                <label for="message">Enter your message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  placeholder="Message"
+                ></textarea>
+                <input type="submit" value="Send" class="submit" />
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -112,7 +116,11 @@
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 export default {
+  components: {
+    Navbar,
+  },
   data() {
     return {
       stats: [

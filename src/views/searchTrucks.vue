@@ -1,28 +1,32 @@
 <template>
-  <div class="search-truck">
-    <div class="container">
-      <h1 class="h1">SEARCH TRUCK</h1>
+  <div>
+    <Navbar />
+    <div class="search-truck">
+      <div class="container">
+        <h1 class="h1">SEARCH TRUCK</h1>
 
-      <post-load :allData="passedData">
-        <template v-slot:iconOfNew>
-          <img :src="passedData.iconOfNew" alt="" />
-        </template>
-      </post-load>
+        <post-load :allData="passedData">
+          <template v-slot:iconOfNew>
+            <img :src="passedData.iconOfNew" alt="" />
+          </template>
+        </post-load>
 
-      <searched-load
-        v-for="value in searchedLoads"
-        :key="value"
-        :searchedData="value"
-      ></searched-load>
+        <searched-load
+          v-for="value in searchedLoads"
+          :key="value"
+          :searchedData="value"
+        ></searched-load>
 
-      <load-filter :numOfResults="numOfResults" />
+        <load-filter :numOfResults="numOfResults" />
 
-      <searched-loads :filteredData="filteredData" />
+        <searched-loads :filteredData="filteredData" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 import PostLoad from "../components/PostLoad.vue";
 import SearchedLoad from "../components/SearchedLoad.vue";
 import LoadFilter from "../components/LoadFilter.vue";
@@ -39,6 +43,7 @@ import stack from "../assets/stack.png";
 
 export default {
   components: {
+    Navbar,
     PostLoad,
     LoadFilter,
     SearchedLoad,
