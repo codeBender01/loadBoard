@@ -5,30 +5,16 @@
         <router-link to="/"> LOGO </router-link>
       </div>
       <div class="form">
-        <h1>Login</h1>
-        <p>Welcome board with us!</p>
+        <h1>Forgot the password</h1>
+        <p>
+          Enter your email address and wait for the behavior code to be sent.
+        </p>
         <form>
-          <label for="user">Username</label>
-          <input type="text" id="user" placeholder="Enter your username" />
-          <label for="pass">Password</label>
-          <input type="password" id="pass" placeholder="Enter your password" />
-          <div class="flex">
-            <div class="flex">
-              <input type="checkbox" id="remember" />
-              <label class="tiny" for="remember">Remember me</label>
-            </div>
+          <label for="mail">Mail Address</label>
+          <input type="password" id="mail" placeholder="Enter your mail" />
 
-            <router-link to="/forgot"
-              ><span class="tiny"> Forgot Password? </span></router-link
-            >
-          </div>
-
-          <input type="submit" value="LOGIN" class="submit" />
+          <input type="submit" value="Send" class="submit" />
         </form>
-
-        <router-link to="/register">
-          <p class="reg">New to Logo? Register Here</p>
-        </router-link>
       </div>
     </div>
   </div>
@@ -74,12 +60,12 @@ $bg: url(../assets/login.png);
     border-radius: 40px;
     padding: 20px 35px;
     color: #ffffff;
+    width: 35%;
     h1 {
       font-weight: 700;
       font-size: 48px;
       line-height: 116%;
       border-bottom: 1px solid #ffffff;
-      width: 40%;
     }
 
     p {
@@ -87,6 +73,7 @@ $bg: url(../assets/login.png);
       font-size: 24px;
       line-height: 132%;
       margin: 10px 0 20px 0;
+      width: 80%;
     }
     input {
       display: block;
@@ -103,27 +90,12 @@ $bg: url(../assets/login.png);
         line-height: 147%;
         color: #ffffff;
       }
-      width: 300px;
-      padding: 10px 5px;
+      width: 100%;
+      padding: 10px 0;
+      padding-left: 10px;
       border: none;
       outline: none;
-    }
-
-    #user {
       margin-bottom: 20px;
-    }
-
-    input[type="checkbox"] {
-      width: auto;
-      display: inline;
-      accent-color: linear-gradient(
-        109.46deg,
-        rgba(201, 201, 201, 0.8) 1.57%,
-        rgba(196, 196, 196, 0.1) 100%
-      );
-      opacity: 0.5;
-      transform: scale(1.2);
-      margin: 0;
     }
 
     .tiny {
@@ -150,7 +122,7 @@ $bg: url(../assets/login.png);
       line-height: 135%;
       letter-spacing: 0.01em;
       color: #000000;
-      width: 100%;
+      width: 102%;
       margin-top: 20px;
     }
 

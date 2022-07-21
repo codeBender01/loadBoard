@@ -5,30 +5,18 @@
         <router-link to="/"> LOGO </router-link>
       </div>
       <div class="form">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <p>Welcome board with us!</p>
         <form>
           <label for="user">Username</label>
           <input type="text" id="user" placeholder="Enter your username" />
+          <label for="mail">Mail Address</label>
+          <input type="password" id="mail" placeholder="Enter your mail" />
           <label for="pass">Password</label>
           <input type="password" id="pass" placeholder="Enter your password" />
-          <div class="flex">
-            <div class="flex">
-              <input type="checkbox" id="remember" />
-              <label class="tiny" for="remember">Remember me</label>
-            </div>
 
-            <router-link to="/forgot"
-              ><span class="tiny"> Forgot Password? </span></router-link
-            >
-          </div>
-
-          <input type="submit" value="LOGIN" class="submit" />
+          <input type="submit" value="Register" class="submit" />
         </form>
-
-        <router-link to="/register">
-          <p class="reg">New to Logo? Register Here</p>
-        </router-link>
       </div>
     </div>
   </div>
@@ -79,7 +67,7 @@ $bg: url(../assets/login.png);
       font-size: 48px;
       line-height: 116%;
       border-bottom: 1px solid #ffffff;
-      width: 40%;
+      width: 55%;
     }
 
     p {
@@ -104,26 +92,14 @@ $bg: url(../assets/login.png);
         color: #ffffff;
       }
       width: 300px;
-      padding: 10px 5px;
+      padding: 10px;
       border: none;
       outline: none;
+      margin-bottom: 20px;
     }
 
     #user {
       margin-bottom: 20px;
-    }
-
-    input[type="checkbox"] {
-      width: auto;
-      display: inline;
-      accent-color: linear-gradient(
-        109.46deg,
-        rgba(201, 201, 201, 0.8) 1.57%,
-        rgba(196, 196, 196, 0.1) 100%
-      );
-      opacity: 0.5;
-      transform: scale(1.2);
-      margin: 0;
     }
 
     .tiny {

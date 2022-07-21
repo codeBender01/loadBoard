@@ -15,7 +15,7 @@
             <span class="login link">Login</span>
           </router-link>
           <span>or</span>
-          <router-link to>
+          <router-link to="/register">
             <span class="link">Register</span>
           </router-link>
         </div>
@@ -194,6 +194,9 @@ $font-color: #fafafa;
     .rg {
       img {
         margin: 0 10px;
+      }
+      a {
+        text-decoration: none;
       }
       span {
         color: $font-color;
