@@ -23,13 +23,12 @@
     </div>
     <div class="header-container flex">
       <div class="logo">
-        <!-- <img :src="logoWhite" alt="logo" /> -->
         <h1>{{ logoName }}</h1>
       </div>
 
-      <ul class="header-links">
+      <ul class="header-links-desktop">
         <router-link
-          v-for="link in links"
+          v-for="link in links.slice(0, 5)"
           :key="link.id"
           :to="link.route"
           exact
@@ -37,9 +36,26 @@
           <li
             @click="activeClassApplier(link.id)"
             :class="link.id === selectedNavLink ? 'active-clicked' : ''"
-            v-html="link.icon ? link.icon : link.innerText"
             class="header-link"
-          ></li>
+          >
+            {{ link.innerText }}
+          </li>
+        </router-link>
+
+        <div class="logo-mobile">
+          <h1 class="h1">{{ logoName }}</h1>
+        </div>
+      </ul>
+
+      <ul class="header-links-mobile">
+        <router-link v-for="link in links" :key="link.id" :to="link.route">
+          <li
+            @click="activeClassApplier(link.id)"
+            :class="link.id === selectedNavLink ? 'active-clicked' : ''"
+            class="header-link"
+          >
+            {{ link.innerText }}
+          </li>
         </router-link>
 
         <div class="logo-mobile">
@@ -53,6 +69,8 @@
         <div class="line"></div>
       </div>
     </div>
+
+    <RouterView />
   </header>
 </template>
 
@@ -107,24 +125,34 @@ export default {
           innerText: "Search loads",
           route: "/searchloads",
         },
+        {
+          id: 6,
+          innerText: "Help Centre",
+          route: "/",
+        },
+        {
+          id: 7,
+          innerText: "Information",
+          route: "/",
+        },
       ],
 
-      selectedNavLink: null,
+      selectedNavLink: undefined,
     };
   },
 
   methods: {
     activeClassApplier(id) {
       this.selectedNavLink = id;
-      // this.$el.classList.toggle("active");
-      // this.$el.querySelector(".burger-menu").classList.toggle("active");
-      // this.$el.querySelector(".header-links").classList.toggle("active");
+      this.$el.classList.toggle("active");
+      this.$el.querySelector(".burger-menu").classList.toggle("active");
+      this.$el.querySelector(".header-links-mobile").classList.toggle("active");
     },
 
     classListToggler() {
       this.$el.classList.toggle("active");
       this.$el.querySelector(".burger-menu").classList.toggle("active");
-      this.$el.querySelector(".header-links").classList.toggle("active");
+      this.$el.querySelector(".header-links-mobile").classList.toggle("active");
     },
 
     removeOnclick(event) {
@@ -133,13 +161,18 @@ export default {
   },
 
   mounted() {
-    this.$router.isReady(() => {
-      for (let link of this.links) {
-        if (this.$route.fullPath === link.route) {
-          this.selectedNavLink = link.id;
+    this.$router
+      .isReady()
+      .then(() => {
+        for (let link of this.links) {
+          if (this.$route.fullPath === link.route) {
+            this.selectedNavLink = link.id;
+          }
         }
-      }
-    });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     const header = this.$el;
     window.addEventListener("scroll", () => {
@@ -244,7 +277,8 @@ $font-color: #fafafa;
       }
     }
 
-    .header-links {
+    .header-links-desktop,
+    .header-links-mobile {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -281,11 +315,6 @@ $font-color: #fafafa;
         color: inherit;
       }
 
-      .active-clicked {
-        margin-top: 0;
-        text-decoration: underline;
-      }
-
       @media (max-width: 950px) {
         & {
           margin-right: 1rem;
@@ -295,6 +324,19 @@ $font-color: #fafafa;
           }
         }
       }
+    }
+
+    .active-clicked {
+      margin-top: 0;
+      text-decoration: underline;
+    }
+
+    .header-links-mobile {
+      display: none;
+    }
+
+    .mobile {
+      display: none;
     }
 
     .burger-menu {
@@ -318,6 +360,13 @@ $font-color: #fafafa;
 
 @media screen and (max-width: 769px) {
   .header {
+    .upper-nav {
+      .rg {
+        img {
+          display: none;
+        }
+      }
+    }
     .header-container {
       width: 90%;
       margin: 0 auto;
@@ -330,17 +379,18 @@ $font-color: #fafafa;
           line-height: 65px;
         }
       }
-      .header-links {
+      .header-links-mobile {
+        display: flex;
         position: fixed;
-        top: 96px;
+        top: 118px;
         left: -100000000px;
         width: 100%;
         transition: 0.3s;
         flex-direction: column;
         height: auto;
-        background: rgba(196, 196, 196, 0.7);
+        background: rgba(21, 46, 53, 0.8);
         backdrop-filter: blur(4px);
-
+        align-items: flex-start;
         .logo-mobile {
           margin-left: auto;
           display: flex;
@@ -364,24 +414,31 @@ $font-color: #fafafa;
         }
 
         li {
-          text-align: start;
           padding: 20px;
-          border-bottom: 1px solid #202123;
           margin: 0;
-
+          font-weight: 400;
+          font-size: 34px;
+          border-bottom: 3px solid #8e8c94;
+          width: 100vw;
+          text-align: left;
           &:hover {
             transition: ease 0.2s;
+            text-decoration: none;
+            color: #c32021;
           }
         }
         .active-clicked {
           padding: 20px;
-          .active-clicked {
-            background: #202123;
-          }
+          text-decoration: none;
+          color: #c32021;
         }
       }
 
-      .header-links.active {
+      .header-links-desktop {
+        display: none;
+      }
+
+      .header-links-mobile.active {
         left: 0;
         padding: 0;
       }
@@ -411,8 +468,9 @@ $font-color: #fafafa;
   }
 
   .header.active {
-    background: rgba(196, 196, 196, 0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(21, 46, 53, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 0;
   }
 }
 </style>
